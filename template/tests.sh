@@ -3,7 +3,7 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-# Run tests
+# Example run test for a react vite app
 echo "Running vitest unit tests for React Vite App"
 npm run test:ci || { echo "Vitest unit tests failed, exiting."; exit 1; }
 
