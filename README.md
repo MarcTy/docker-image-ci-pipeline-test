@@ -6,3 +6,5 @@ The images built are the react client component and the sensor publisher compone
 
 ## Integration 
 Create a docker-compose.yaml to run all images together in parallel.
+
+T
