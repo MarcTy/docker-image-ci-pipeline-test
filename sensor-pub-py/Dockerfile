@@ -15,3 +15,6 @@ EXPOSE 8080
 
 # Run app.py when the container launches
 CMD ["python", "main.py"]
+
+# For github package registry compatibility
+LABEL org.opencontainers.image.source https://github.com/MarcTy/docker-image-ci-pipeline-test
