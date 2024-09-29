@@ -22,4 +22,4 @@ EXPOSE 4000
 CMD ["npm", "run", "dev"]
 
 # For github package registry compatibility
-LABEL org.opencontainers.image.source https://github.com/MarcTy/git-docker-registry
+LABEL org.opencontainers.image.source https://github.com/MarcTy/docker-image-ci-pipeline-test
