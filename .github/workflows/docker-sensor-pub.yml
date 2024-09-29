@@ -16,13 +16,13 @@ on:
   schedule:
     - cron: '45 13 * * *'
   push:
-    branches: ["Main"]
+    branches: ["main"]
     paths:
       - 'sensor-pub-py/**'
     tags: ['v*.*.*']
   pull_request:
     types: open
-    branches: ["Main"]
+    branches: ["main"]
 
 env:
   # Set registry to Github Container Registry
