@@ -22,7 +22,7 @@ on:
     tags: ['v*.*.*']
   pull_request:
     types: [opened, synchronize, reopened]
-    branches: ["Main"]
+    branches: ["main"]
 env:
   # Set registry to Github Container Registry
   REGISTRY: ghcr.io
