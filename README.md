@@ -5,4 +5,4 @@ Test repository for testing a docker ci pipeline complete with unit and integrat
 The images built are the react client component and the sensor publisher components, the mosquitto server is itself a docker image.
 
 ## Integration 
-Create a docker-compose.yaml to run all images together in parallel.
+Create a docker-compose.yaml to run all images together in parallel. The first step is merging.
