@@ -31,7 +31,7 @@ env:
   NAME: react-vite-tel-interface
 
 jobs:
-  build-and-test:
+  docker-build-test-push-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Set repository name to lowercase
@@ -46,7 +46,7 @@ jobs:
 
       - name: Run tests in Docker container
         id: run-tests
-        run: docker run --rm ${{ env.REGISTRY }}/${{ env.repo_name }}/${{ env.NAME }}:latest ./tests.sh
+        run: docker run --rm ${{ env.REGISTRY }}/${{ env.repo_name }}/${{ env.NAME }}:latest bash ./tests.sh
 
       - name: Handle test results
         if: steps.run-tests.outcome == 'failure'
