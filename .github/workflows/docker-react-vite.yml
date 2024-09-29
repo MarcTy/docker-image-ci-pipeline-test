@@ -34,11 +34,15 @@ jobs:
   build-image-from-dockerfile:
     runs-on: ubuntu-latest
     steps:
+      - name: Set repository name to lowercase
+        id: repo
+        run: echo "repo_name=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Build Docker image from Dockerfile
-        run: docker build --tag ${{ env.REGISTRY }}/${{ github.repository | toLower }}:test:latest ./client-app
+        run: docker build --tag ${{ env.REGISTRY }}/${{ env.repo_name }}:test:latest ./client-app
 
   run-tests-in-bash:
     runs-on: ubuntu-latest
@@ -49,7 +53,7 @@ jobs:
 
       - name: Run tests in Docker container
         id: run-tests
-        run: docker run --rm ${{ env.REGISTRY }}/${{ github.repository | toLower }}:test:latest ./tests.sh
+        run: docker run --rm ${{ env.REGISTRY }}/${{ env.repo_name }}:test:latest ./tests.sh
 
       - name: Handle test results
         if: steps.run-tests.outcome == 'failure'
@@ -64,4 +68,4 @@ jobs:
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u "${{ github.actor }}" --password-stdin
 
       - name: Push Docker image to Registry
-        run: docker push ${{ env.REGISTRY }}/${{ github.repository | toLower }}:test:latest
+        run: docker push ${{ env.REGISTRY }}/${{ env.repo_name }}:test:latest
