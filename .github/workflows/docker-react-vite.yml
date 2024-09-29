@@ -16,14 +16,13 @@ on:
   schedule:
     - cron: '45 13 * * *'
   push:
-    branches: ["Main"]
+    branches: ["main"]
     paths:
       - 'client-app/**'
     tags: ['v*.*.*']
   pull_request:
     types: [opened, synchronize, reopened]
     branches: ["Main"]
-
 env:
   # Set registry to Github Container Registry
   REGISTRY: ghcr.io
